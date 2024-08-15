@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                Intent intent=new Intent(MainActivity.this, Sineup.class);
+                Intent intent=new Intent(MainActivity.this, Signup.class);
                 startActivity(intent);
             }
         });
