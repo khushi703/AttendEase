@@ -23,15 +23,15 @@ public class Login extends AppCompatActivity
     private Button buttonlogin;
     TextInputEditText email,password;
     FirebaseAuth mAuth;
-    @Override
-    public void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Intent intent=new Intent(getApplicationContext(),Attendence.class);
-            startActivity(intent);
-        }
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        if(currentUser != null){
+//            Intent intent=new Intent(getApplicationContext(),Attendence.class);
+//            startActivity(intent);
+//        }
+//    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,9 +66,9 @@ public class Login extends AppCompatActivity
                                 if (task.isSuccessful())
                                 {
                                     Toast.makeText(getApplicationContext(),"login successfully",Toast.LENGTH_SHORT).show();
-                                            Intent intent=new Intent(getApplicationContext(),Attendence.class);
-                                        startActivity(intent);
-                                        finish();
+                                    Intent intent=new Intent(getApplicationContext(),Attendence.class);
+                                    startActivity(intent);
+                                    finish();
                                 }
                                 else {
                                     Toast.makeText(getApplicationContext(),"login failed",Toast.LENGTH_SHORT).show();
