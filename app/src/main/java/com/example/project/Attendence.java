@@ -16,6 +16,5 @@ public class Attendence extends AppCompatActivity
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.attendence);
-
     }
 }
