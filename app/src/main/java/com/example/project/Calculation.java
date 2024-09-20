@@ -22,6 +22,8 @@ public class Calculation extends AppCompatActivity {
     private TextView todaysAttendanceTextView;
     private TextView overallAttendanceTextView;
     private TextView bunkFor80PercentTextView;
+    private TextView bunkFor75PercentTextView;
+    private TextView attendFor80PercentTextView;
     private TextView attendFor75PercentTextView;
 
     // Store selected date (default is today)
@@ -35,6 +37,8 @@ public class Calculation extends AppCompatActivity {
         todaysAttendanceTextView = findViewById(R.id.todaysAttendanceTextView);
         overallAttendanceTextView = findViewById(R.id.overallAttendanceTextView);
         bunkFor80PercentTextView = findViewById(R.id.bunkFor80PercentTextView);
+        bunkFor75PercentTextView = findViewById(R.id.bunkFor75PercentTextView);
+        attendFor80PercentTextView = findViewById(R.id.attendFor80PercentTextView);
         attendFor75PercentTextView = findViewById(R.id.attendFor75PercentTextView);
 
         // Initialize with today's date
@@ -55,8 +59,10 @@ public class Calculation extends AppCompatActivity {
     private void clearPreviousData() {
         todaysAttendanceTextView.setText(""); // Clear today's attendance
         overallAttendanceTextView.setText(""); // Clear overall attendance
-        bunkFor80PercentTextView.setText(""); // Clear bunk info
-        attendFor75PercentTextView.setText(""); // Clear 75% info
+        bunkFor80PercentTextView.setText(""); // Clear 80% bunk info
+        bunkFor75PercentTextView.setText(""); // Clear 75% bunk info
+        attendFor80PercentTextView.setText(""); // Clear 80% attend info
+        attendFor75PercentTextView.setText(""); // Clear 75% attend info
     }
 
     private void fetchAttendanceData(String date) {
@@ -106,13 +112,19 @@ public class Calculation extends AppCompatActivity {
                     double overallAttendance = (totalLectures > 0) ? (attendedLectures * 100.0 / totalLectures) : 0;
                     overallAttendanceTextView.setText("Overall Attendance: " + String.format("%.2f", overallAttendance) + "%");
 
-                    // Calculate lectures the user can bunk for 80% attendance
-                    int lecturesToBunkFor80 = calculateBunkFor80(attendedLectures, totalLectures);
-                    bunkFor80PercentTextView.setText("Lectures you can bunk for 80%: " + lecturesToBunkFor80);
-
-                    // Calculate lectures the user needs to attend to reach 75% attendance
+                    // Calculate lectures to attend and bunk for both 75% and 80%
                     int lecturesToAttendFor75 = calculateAttendFor75(attendedLectures, totalLectures);
-                    attendFor75PercentTextView.setText("Lectures you need to attend for 75%: " + lecturesToAttendFor75);
+                    int lecturesToAttendFor80 = calculateAttendFor80(attendedLectures, totalLectures);
+
+                    int lecturesToBunkFor75 = calculateBunkFor75(attendedLectures, totalLectures);
+                    int lecturesToBunkFor80 = calculateBunkFor80(attendedLectures, totalLectures);
+
+                    // Set TextViews
+                    attendFor75PercentTextView.setText("Lectures needed to attend for 75%: " + lecturesToAttendFor75);
+                    attendFor80PercentTextView.setText("Lectures needed to attend for 80%: " + lecturesToAttendFor80);
+
+                    bunkFor75PercentTextView.setText("Lectures you can bunk for 75%: " + lecturesToBunkFor75);
+                    bunkFor80PercentTextView.setText("Lectures you can bunk for 80%: " + lecturesToBunkFor80);
                 }
 
                 @Override
@@ -131,6 +143,50 @@ public class Calculation extends AppCompatActivity {
         return year + "-" + String.format("%02d", month) + "-" + String.format("%02d", day);
     }
 
+    // Method to calculate how many lectures the user needs to attend to maintain 75% attendance
+    private int calculateAttendFor75(int attendedLectures, int totalLectures) {
+        int neededLectures = 0;
+        double currentAttendance = (totalLectures > 0) ? (attendedLectures * 100.0 / totalLectures) : 0;
+
+        while (currentAttendance < 75.0) {
+            totalLectures++;
+            attendedLectures++;
+            currentAttendance = (attendedLectures * 100.0 / totalLectures);
+            neededLectures++;
+        }
+        return neededLectures;
+    }
+
+    // Method to calculate how many lectures the user needs to attend to maintain 80% attendance
+    private int calculateAttendFor80(int attendedLectures, int totalLectures) {
+        int neededLectures = 0;
+        double currentAttendance = (totalLectures > 0) ? (attendedLectures * 100.0 / totalLectures) : 0;
+
+        while (currentAttendance < 80.0) {
+            totalLectures++;
+            attendedLectures++;
+            currentAttendance = (attendedLectures * 100.0 / totalLectures);
+            neededLectures++;
+        }
+        return neededLectures;
+    }
+
+    // Method to calculate how many lectures the user can bunk to maintain 75% attendance
+    private int calculateBunkFor75(int attendedLectures, int totalLectures) {
+        int possibleBunks = 0;
+        double currentAttendance = (totalLectures > 0) ? (attendedLectures * 100.0 / totalLectures) : 0;
+
+        while (currentAttendance >= 75.0) {
+            totalLectures++;
+            currentAttendance = (attendedLectures * 100.0 / totalLectures);
+            possibleBunks++;
+        }
+
+        // If no lectures can be bunked (bunks would result in < 75% attendance), return 0
+        return Math.max(possibleBunks - 1, 0);
+    }
+
+
     // Method to calculate how many lectures the user can bunk to maintain 80% attendance
     private int calculateBunkFor80(int attendedLectures, int totalLectures) {
         int possibleBunks = 0;
@@ -141,21 +197,9 @@ public class Calculation extends AppCompatActivity {
             currentAttendance = (attendedLectures * 100.0 / totalLectures);
             possibleBunks++;
         }
-        return possibleBunks - 1;
+
+        // If no lectures can be bunked (bunks would result in < 80% attendance), return 0
+        return Math.max(possibleBunks - 1, 0);
     }
 
-    // Method to calculate how many lectures the user needs to attend to reach 75% attendance
-    private int calculateAttendFor75(int attendedLectures, int totalLectures) {
-        int neededLectures = 0;
-        double currentAttendance = (totalLectures > 0) ? (attendedLectures * 100.0 / totalLectures) : 0;
-
-        while (currentAttendance < 75.0)
-        {
-            totalLectures++;
-            attendedLectures++;
-            currentAttendance = (attendedLectures * 100.0 / totalLectures);
-            neededLectures++;
-        }
-        return neededLectures;
-    }
 }

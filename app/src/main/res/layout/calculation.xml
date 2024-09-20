@@ -17,6 +17,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Today's Attendance -->
             <TextView
                 android:id="@+id/todaysAttendanceTextView"
                 android:layout_width="wrap_content"
@@ -26,6 +27,7 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="16dp" />
 
+            <!-- Overall Attendance -->
             <TextView
                 android:id="@+id/overallAttendanceTextView"
                 android:layout_width="wrap_content"
@@ -35,6 +37,7 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="16dp" />
 
+            <!-- Lectures You Can Bunk to Maintain 80% -->
             <TextView
                 android:id="@+id/bunkFor80PercentTextView"
                 android:layout_width="wrap_content"
@@ -43,14 +46,34 @@
                 android:textSize="16sp"
                 android:layout_marginBottom="16dp" />
 
+            <!-- Lectures You Can Bunk to Maintain 75% -->
+            <TextView
+                android:id="@+id/bunkFor75PercentTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lectures you can bunk for 75%: 0"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Lectures Needed to Attend for 75% -->
             <TextView
                 android:id="@+id/attendFor75PercentTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lectures you need to attend for 75%: 0"
                 android:textSize="16sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Lectures Needed to Attend for 80% -->
+            <TextView
+                android:id="@+id/attendFor80PercentTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lectures you need to attend for 80%: 0"
+                android:textSize="16sp"
                 android:layout_marginBottom="32dp" />
 
+            <!-- Section for Subject-wise Attendance -->
             <TextView
                 android:text="Subject-wise Attendance:"
                 android:textSize="20sp"
@@ -59,6 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
+            <!-- Container for Dynamic Subject-wise Attendance Entries -->
             <LinearLayout
                 android:id="@+id/attendanceContainer"
                 android:layout_width="match_parent"
