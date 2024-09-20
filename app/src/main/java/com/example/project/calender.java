@@ -22,7 +22,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class calender extends AppCompatActivity {
 
@@ -39,7 +38,7 @@ public class calender extends AppCompatActivity {
 
         calendarView = findViewById(R.id.calendarView);
         lectureRecyclerView = findViewById(R.id.lectureRecyclerView);
-        btn =(Button) findViewById(R.id.button);
+        btn = findViewById(R.id.button);
         lectureRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         lectureList = new ArrayList<>();
@@ -50,13 +49,11 @@ public class calender extends AppCompatActivity {
             String selectedDate = getFormattedDate(year, month, dayOfMonth);
             fetchSubjects(selectedDate);
         });
-        // check for attendence
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(calender.this, Calculation.class);
-                startActivity(intent);
-            }
+
+        // Button to navigate to calculation page
+        btn.setOnClickListener(v -> {
+            Intent intent = new Intent(calender.this, Calculation.class);
+            startActivity(intent);
         });
     }
 
@@ -113,15 +110,8 @@ public class calender extends AppCompatActivity {
         }
     }
 
-
-
-
-
     private String getFormattedDate(int year, int month, int day) {
         month += 1;
         return year + "-" + String.format("%02d", month) + "-" + String.format("%02d", day);
     }
-
-
-
 }

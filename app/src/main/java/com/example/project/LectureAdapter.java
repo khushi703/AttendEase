@@ -1,4 +1,3 @@
-// LectureAdapter.java
 package com.example.project;
 
 import android.util.Log;
@@ -29,7 +28,6 @@ public class LectureAdapter extends RecyclerView.Adapter<LectureAdapter.ViewHold
         this.lectureList = lectureList;
     }
 
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -43,7 +41,6 @@ public class LectureAdapter extends RecyclerView.Adapter<LectureAdapter.ViewHold
         holder.subjectName.setText(lecture.getName());
         holder.lectureInfo.setText(lecture.getInfo());
 
-        // Get user email and replace '.' with ',' to use it as the key
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             String userEmail = user.getEmail();
@@ -52,7 +49,7 @@ public class LectureAdapter extends RecyclerView.Adapter<LectureAdapter.ViewHold
                 String date = lecture.getDate();
                 String lectureName = lecture.getName();
 
-                // Reference to the specific user's attendance in Firebase using email
+                // Reference to the user's attendance
                 DatabaseReference attendanceRef = FirebaseDatabase.getInstance().getReference("Attendance")
                         .child(emailKey).child(date).child(lectureName);
 
@@ -70,7 +67,7 @@ public class LectureAdapter extends RecyclerView.Adapter<LectureAdapter.ViewHold
                     }
                 });
 
-                // Add a listener for checkbox changes
+                // Add listener for checkbox changes
                 holder.attendanceCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
                     // Store true or false in Firebase based on checkbox state
                     attendanceRef.setValue(isChecked);
@@ -78,9 +75,6 @@ public class LectureAdapter extends RecyclerView.Adapter<LectureAdapter.ViewHold
             }
         }
     }
-
-
-
 
     @Override
     public int getItemCount() {
