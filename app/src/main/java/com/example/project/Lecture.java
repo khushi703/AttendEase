@@ -3,10 +3,12 @@ package com.example.project;
 public class Lecture {
     private String name;
     private String info;
-
-    public Lecture(String name, String info) {
+    private String date;
+    public Lecture(String name, String info, String date)
+    {
         this.name = name;
         this.info = info;
+        this.date=date;
     }
 
     public String getName() {
@@ -16,4 +18,9 @@ public class Lecture {
     public String getInfo() {
         return info;
     }
+    // Getter for date
+    public String getDate() {
+        return date;
+    }
+
 }

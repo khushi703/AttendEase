@@ -1,6 +1,7 @@
 // LectureAdapter.java
 package com.example.project;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -19,6 +28,7 @@ public class LectureAdapter extends RecyclerView.Adapter<LectureAdapter.ViewHold
     public LectureAdapter(ArrayList<Lecture> lectureList) {
         this.lectureList = lectureList;
     }
+
 
     @NonNull
     @Override
@@ -32,10 +42,45 @@ public class LectureAdapter extends RecyclerView.Adapter<LectureAdapter.ViewHold
         Lecture lecture = lectureList.get(position);
         holder.subjectName.setText(lecture.getName());
         holder.lectureInfo.setText(lecture.getInfo());
-        holder.attendanceCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            // Store attendance status in Firebase here
-        });
+
+        // Get user email and replace '.' with ',' to use it as the key
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String userEmail = user.getEmail();
+            if (userEmail != null) {
+                String emailKey = userEmail.replace(".", ",");
+                String date = lecture.getDate();
+                String lectureName = lecture.getName();
+
+                // Reference to the specific user's attendance in Firebase using email
+                DatabaseReference attendanceRef = FirebaseDatabase.getInstance().getReference("Attendance")
+                        .child(emailKey).child(date).child(lectureName);
+
+                // Set the checkbox state based on Firebase data
+                attendanceRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Boolean isChecked = snapshot.getValue(Boolean.class);
+                        holder.attendanceCheckBox.setChecked(isChecked != null && isChecked);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.e("Firebase", "Failed to read checkbox state", error.toException());
+                    }
+                });
+
+                // Add a listener for checkbox changes
+                holder.attendanceCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                    // Store true or false in Firebase based on checkbox state
+                    attendanceRef.setValue(isChecked);
+                });
+            }
+        }
     }
+
+
+
 
     @Override
     public int getItemCount() {
