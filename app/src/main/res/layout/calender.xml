@@ -3,36 +3,44 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+   android:background="@drawable/page3">
 
     <CalendarView
         android:id="@+id/calendarView"
-        android:layout_width="317dp"
-        android:layout_height="300dp"
+        android:layout_width="326dp"
+        android:layout_height="313dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white"
+        android:textColorSecondary="@color/white"
+        android:focusedMonthDateColor="@color/white"
+        android:unfocusedMonthDateColor="@color/white"
+        android:weekNumberColor="@color/white"
+        android:weekSeparatorLineColor="@color/white"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lectureRecyclerView"
-        android:layout_width="282dp"
-        android:layout_height="154dp"
+        android:layout_width="297dp"
+        android:layout_height="191dp"
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.781"
+        app:layout_constraintHorizontal_bias="0.701"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/calendarView"
-        app:layout_constraintVertical_bias="0.17"
+        app:layout_constraintVertical_bias="0.277"
         tools:listitem="@layout/item_lecture" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/white"
         android:text="Check Your Attendence"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lectureRecyclerView" />

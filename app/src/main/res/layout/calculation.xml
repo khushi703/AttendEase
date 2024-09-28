@@ -5,83 +5,66 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Calculation">
+    tools:context=".Calculation"
+    android:background="@drawable/lastpage">
+<!--    android:background="@drawable/best">-->
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
 
             <!-- Today's Attendance -->
-            <TextView
-                android:id="@+id/todaysAttendanceTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Today's Attendance: 0.00%"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp" />
 
-            <!-- Overall Attendance -->
-            <TextView
-                android:id="@+id/overallAttendanceTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Overall Attendance: 0.00%"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp" />
+    <!--     Overall Attendance -->
 
-            <!-- Lectures You Can Bunk to Maintain 80% -->
-            <TextView
-                android:id="@+id/bunkFor80PercentTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Number of hours remaining after 80%: 0"
-                android:textSize="16sp"
-                android:layout_marginBottom="16dp" />
+    <!--            &lt;!&ndash; Lectures You Can Bunk to Maintain 80% &ndash;&gt;-->
 
-            <!-- Lectures You Can Bunk to Maintain 75% -->
-            <TextView
-                android:id="@+id/bunkFor75PercentTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Number of hours remaining after 80%: 0"
-                android:textSize="16sp"
-                android:layout_marginBottom="16dp" />
+    <!--            &lt;!&ndash; Lectures You Can Bunk to Maintain 75% &ndash;&gt;-->
 
-            <!--            &lt;!&ndash; Lectures Needed to Attend for 75% &ndash;&gt;-->
-            <!--            <TextView-->
-            <!--                android:id="@+id/attendFor75PercentTextView"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="Lectures you need to attend for 75%: 0"-->
-            <!--                android:textSize="16sp"-->
-            <!--                android:layout_marginBottom="16dp" />-->
+    <TextView
+        android:id="@+id/todaysAttendanceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="292dp"
+        android:text="Today's Attendance: 0.00%"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <!--            &lt;!&ndash; Lectures Needed to Attend for 80% &ndash;&gt;-->
-            <!--            <TextView-->
-            <!--                android:id="@+id/attendFor80PercentTextView"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="Lectures you need to attend for 80%: 0"-->
-            <!--                android:textSize="16sp"-->
-            <!--                android:layout_marginBottom="32dp" />-->
+    <TextView
+        android:id="@+id/overallAttendanceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="42dp"
+        android:text="Overall Attendance: 0.00%"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todaysAttendanceTextView" />
 
-            <!-- Section for Subject-wise Attendance -->
+    <TextView
+        android:id="@+id/bunkFor80PercentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="42dp"
+        android:text="Number of hours remaining after 80%: 0"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/overallAttendanceTextView" />
 
-            <!-- Container for Dynamic Subject-wise Attendance Entries -->
-            <LinearLayout
-                android:id="@+id/attendanceContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
+    <TextView
+        android:id="@+id/bunkFor75PercentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="42dp"
+        android:text="Number of hours remaining after 80%: 0"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bunkFor80PercentTextView" />
 
-        </LinearLayout>
-    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
