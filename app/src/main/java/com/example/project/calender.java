@@ -1,6 +1,7 @@
 package com.example.project;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -55,6 +56,8 @@ public class calender extends AppCompatActivity {
             Intent intent = new Intent(calender.this, Calculation.class);
             startActivity(intent);
         });
+        CalendarView calendarView = findViewById(R.id.calendarView);
+        calendarView.setSelectedWeekBackgroundColor(Color.GREEN);
     }
 
     private void fetchSubjects(String date) {
@@ -98,7 +101,7 @@ public class calender extends AppCompatActivity {
                         }
                         lectureAdapter.notifyDataSetChanged();
                     } else {
-                        Toast.makeText(calender.this, "No subjects found for this date", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(calender.this, "Holiday", Toast.LENGTH_SHORT).show();
                     }
                 }
 

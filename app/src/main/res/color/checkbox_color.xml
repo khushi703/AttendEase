@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- State when checkbox is checked -->
+    <item android:color="@color/white" android:state_checked="true"/>
+    <!-- Default state when checkbox is unchecked -->
+    <item android:color="@color/white"/>
+        <!-- State when a date is selected -->
+        <item android:color="@color/white" android:state_pressed="true"/>
+        <!-- State for today's date -->
+        <item android:color="@color/white" android:state_selected="true"/>
+        <!-- Default state -->
+        <item android:color="@android:color/transparent"/>
+</selector>

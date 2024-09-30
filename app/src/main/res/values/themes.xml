@@ -5,6 +5,8 @@
 <!--        &lt;!&ndash; <item name="colorPrimary">@color/my_light_primary</item> &ndash;&gt;-->
 <!--    </style>-->
 
-    <style name="Theme.YourAppName" parent="Theme.MaterialComponents.DayNight.NoActionBar"></style>
-    <style name="Theme.Project" parent="Base.Theme.Project" />
+    <style name="AppTheme.FullScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
 </resources>

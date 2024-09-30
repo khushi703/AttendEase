@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Calculation"
-    android:background="@drawable/lastpage">
+    android:background="@drawable/lastpage"
+    android:theme="@style/AppTheme.FullScreen">
 <!--    android:background="@drawable/best">-->
 
 
@@ -60,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
         android:layout_marginTop="42dp"
-        android:text="Number of hours remaining after 80%: 0"
+        android:text="Number of hours remaining after 75%: 0"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
