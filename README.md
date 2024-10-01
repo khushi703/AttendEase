@@ -1,7 +1,7 @@
-## 𝐀𝐭𝐭𝐞𝐧𝐝E𝐚𝐬𝐞 🎓✨
-Attendease is here to simplify attendance tracking for **DDU students**! With an easy-to-use calendar and real-time calculations, students can track their attendance and make sure they stay on top of that crucial 80% mark. 📅✅ <br>
+## AttendEase� 🎓✨
+AttendEase is here to simplify attendance tracking for **DDU students**! With an easy-to-use calendar and real-time calculations, students can track their attendance and make sure they stay on top of that crucial 80% mark. 📅✅ <br>
 
-![Attendease App UI](./Readme.jpg) <br>
+![AttendEase App UI](./Readme.jpg) <br>
 
 
 ## 𝐓𝐞𝐜𝐡𝐧𝐨𝐥𝐨𝐠𝐢𝐞𝐬 𝐔𝐬𝐞𝐝 💻  
@@ -9,7 +9,7 @@ Attendease is here to simplify attendance tracking for **DDU students**! With an
 - **Firebase** 🔥  
 
 ## What We Learned 📚  
-Throughout the journey of building Attendease, we honed our skills in:
+Throughout the journey of building AttendEase, we honed our skills in:
 
 - **User Authentication** 🔐: Verifying DDU student credentials through Firebase.  
 - **Database Integration** 🗄️: Seamlessly managing student data with Firebase.  
@@ -30,14 +30,14 @@ Throughout the journey of building Attendease, we honed our skills in:
    - Total attendance is calculated automatically.  
    - The app even shows how many hours are left for safe "bunking" 🕒 while still maintaining 80% attendance.
 
-## Future of Attendease 🚀  
-We’re excited to take Attendease even further with:
+## Future of AttendEase 🚀  
+We’re excited to take AttendEase even further with:
 
 - **Smart Notifications** 🔔: Reminders about upcoming lectures and attendance status.  
 - **Visual Attendance Trends** 📊: A dashboard showing your attendance over time.  
 - **Teacher Integration** 👨‍🏫👩‍🏫: Tools for teachers to track and manage class attendance.
 - **Subject-wise Attendance** 📚: A detailed breakdown of attendance for each subject.
 
-With **Attendease**, tracking your attendance has never been easier or more fun! 🎉
+With **AttendEase**, tracking your attendance has never been easier or more fun! 🎉
 
-**Note:** Attendease is currently available only for DDU students.
+**Note:** AttendEase is currently available only for DDU students.
