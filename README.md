@@ -1,4 +1,4 @@
-## AttendEase� 🎓✨
+## AttendEase🎓✨
 AttendEase is here to simplify attendance tracking for **DDU students**! With an easy-to-use calendar and real-time calculations, students can track their attendance and make sure they stay on top of that crucial 80% mark. 📅✅ <br>
 
 ![AttendEase App UI](./Readme.jpg) <br>
