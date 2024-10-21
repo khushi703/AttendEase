@@ -31,12 +31,19 @@ public class calender extends AppCompatActivity {
     private LectureAdapter lectureAdapter;
     private ArrayList<Lecture> lectureList;
     private Button btn;
-
+    private Button btn2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calender);
-
+        btn2 =findViewById(R.id.button2);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(calender.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
         calendarView = findViewById(R.id.calendarView);
         lectureRecyclerView = findViewById(R.id.lectureRecyclerView);
         btn = findViewById(R.id.button);
